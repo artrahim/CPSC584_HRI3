@@ -1,0 +1,24 @@
+{
+  "name": "cpsc584_hri3",
+  "version": "1.0.0",
+  "description": "CPSC584 Drone Director Project",
+  "main": "index.js",
+  "dependencies": {
+    "node-bebop": "^0.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artrahim/CPSC584_HRI3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artrahim/CPSC584_HRI3/issues"
+  },
+  "homepage": "https://github.com/artrahim/CPSC584_HRI3#readme"
+}
