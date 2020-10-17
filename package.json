@@ -4,9 +4,16 @@
   "description": "CPSC584 Drone Director Project",
   "main": "index.js",
   "dependencies": {
-    "node-bebop": "^0.6.0"
+    "node-bebop": "^0.6.0",
+    "opencv": "^7.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "module-alias": "^2.2.2"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@lib": "lib/"
+  },
   "scripts": {
     "start": "node src/index.js",
     "debug": "node inspect src/index.js",
