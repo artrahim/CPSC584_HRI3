@@ -1,14 +1,11 @@
-const bebop = require("node-bebop"),
-    fs = require("fs");
+// const bebop = require("node-bebop"),
+//     fs = require("fs");
+//
+// const output = fs.createWriteStream("./video.h264"),
+//     drone = bebop.createClient(),
+//     video = drone.getVideoStream();
 
-const output = fs.createWriteStream("./video.h264"),
-    drone = bebop.createClient(),
-    video = drone.getVideoStream();
-// console.log(output);
-// console.log(drone);
-// console.log(video);
-
-video.pipe(output);
+// video.pipe(output);
 
 // start a live stream
 // drone.connect(() => {
@@ -16,14 +13,26 @@ video.pipe(output);
 // });
 
 // take a 5 second recording with the drone
-drone.connect(() => {
-    drone.startRecording();
+// drone.connect(() => {
+//     drone.startRecording();
+//
+//     setTimeout(function() {
+//         drone.stopRecording();
+//     }, 5000);
+// });
+//
+// drone.on('ready', () => {
+//     console.log('the drone has connected!');
+// });
+
+var bebop = require('../lib/node-bebop');
+
+var drone = bebop.createClient();
+
+drone.connect(function() {
+    drone.takeOff();
 
     setTimeout(function() {
-        drone.stopRecording();
+        drone.land();
     }, 5000);
-});
-
-drone.on('ready', () => {
-    console.log('the drone has connected!');
 });
