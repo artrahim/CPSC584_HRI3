@@ -1,0 +1,24 @@
+@import "util";
+
+div.main-section {
+  background: aliceblue;
+  display: flex;
+  height: $viewport-height;
+  justify-content: space-between;
+  width: $viewport-width;
+
+  // flexbox children
+  & > div {
+    background: cornflowerblue;
+    border-radius: 50%;
+    color: $text-colour;
+    height: $button-diameter;
+    line-height: $button-diameter;
+    text-align: center;
+    width: $button-diameter;
+  }
+}
+
+.hidden {
+  display: none;
+}

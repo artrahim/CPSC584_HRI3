@@ -1,0 +1,22 @@
+div.main-section {
+  background: aliceblue;
+  display: flex;
+  height: 360px;
+  justify-content: space-between;
+  width: 640px;
+}
+div.main-section > div {
+  background: cornflowerblue;
+  border-radius: 50%;
+  color: white;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  width: 60px;
+}
+
+.hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */
