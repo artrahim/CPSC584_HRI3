@@ -4,6 +4,8 @@ $(function () {
         $land = $("div.land"),
         $forward = $("div.forward"),
         $backward = $("div.back"),
+        $right = $("div.right"),
+        $left = $("div.left"),
         $stop = $("div.stop"),
         $emergency = $("div.emergency");
 
@@ -21,6 +23,14 @@ $(function () {
 
     $backward.on("click", function(){
         socket.emit('backward');
+    });
+
+    $right.on("click", function(){
+        socket.emit('right');
+    });
+
+    $left.on("click", function(){
+        socket.emit('left');
     });
 
     $land.on("click", function(){

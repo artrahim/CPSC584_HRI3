@@ -31,6 +31,16 @@ io.on('connection', function(socket){
         drone.backward(10);
     });
 
+    socket.on('right', function () {
+        console.log("right");
+        drone.right(10);
+    });
+
+    socket.on('left', function () {
+        console.log("left");
+        drone.left(10);
+    });
+
     socket.on('land', function () {
         console.log("land");
         drone.land();
