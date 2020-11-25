@@ -1,14 +1,100 @@
-div.main-section {
-  background: aliceblue;
+div.main-section div.foot, div.main-section div.head {
+  background: #d8d8d8;
   display: flex;
-  height: 360px;
+  height: 40px;
   justify-content: space-between;
-  width: 640px;
+  width: 854px;
 }
-div.main-section > div {
+
+div.main-section button.flip-view, div.main-section button.rec-button, div.main-section button.takeoff-land {
+  align-self: center;
+  background: none;
+  border: none;
+  height: 60px;
+  width: 60px;
+}
+
+div.main-section {
+  color: #3b3b3b;
+  display: flex;
+  flex-flow: row wrap;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  height: 480px;
+  justify-content: space-between;
+  width: 854px;
+}
+div.main-section div.head {
+  border-bottom: #3b3b3b solid 2px;
+}
+div.main-section div.head img.icon {
+  height: 30px;
+  padding: 5px;
+  width: 30px;
+}
+div.main-section div.head div.status {
+  background: #dba12a;
+  border-radius: 3px;
+  color: #3b3b3b;
+  height: 35px;
+  letter-spacing: 3px;
+  line-height: 30px;
+  text-align: center;
+  width: 120px;
+}
+div.main-section div.head div.dropdown-button {
+  background: #3b3b3b;
+  border-radius: 3px;
+  height: 60px;
+  width: 210px;
+}
+div.main-section div.head div.dropdown-button img.arrow {
+  display: block;
+  height: 40px;
+  margin: 20px auto 0;
+  text-align: center;
+  width: 60px;
+}
+div.main-section div.head div.indicator {
+  margin: 10px;
+}
+div.main-section div.head div.indicator.rec-status::before {
+  background: #da0000;
+  border-radius: 50%;
+  content: " ";
+  display: inline-block;
+  height: 12px;
+  margin-right: 6px;
+  width: 12px;
+}
+div.main-section .background {
+  height: 480px;
+  position: absolute;
+  width: 854px;
+  z-index: -2;
+}
+div.main-section .camera-view {
+  position: absolute;
+  z-index: -1;
+}
+div.main-section button.takeoff-land {
+  background-image: url("./resources/up-arrow.png");
+}
+div.main-section button.rec-button {
+  background-image: url("./resources/rec.png");
+}
+div.main-section button.flip-view {
+  background-image: url("./resources/flip.png");
+  position: absolute;
+  left: 802px;
+  top: 380px;
+}
+div.main-section div.foot {
+  align-self: flex-end;
+  border-top: #3b3b3b solid 2px;
+}
+div.main-section div.drone-button {
   background: cornflowerblue;
   border-radius: 50%;
-  color: white;
   height: 60px;
   line-height: 60px;
   text-align: center;

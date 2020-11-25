@@ -1,17 +1,106 @@
 @import "util";
 
 div.main-section {
-  background: aliceblue;
+  color: $grey;
   display: flex;
+  flex-flow: row wrap;
+  font-family: $font;
   height: $viewport-height;
   justify-content: space-between;
   width: $viewport-width;
 
+  div.head {
+    @extend %status-bar;
+    border-bottom: $grey solid 2px;
+
+    img.icon {
+      height: $icon-dimensions;
+      padding: 5px;
+      width: $icon-dimensions;
+    }
+
+    div.status {
+      background: $indicator-colour;
+      border-radius: 3px;
+      color: $grey;
+      height: 35px;
+      letter-spacing: 3px;
+      line-height: 30px;
+      text-align: center;
+      width: 120px;
+    }
+
+    div.dropdown-button {
+      background: $grey;
+      border-radius: 3px;
+      height: 60px;
+      width: 210px;
+
+      img.arrow {
+        display: block;
+        height: 40px;
+        margin: 20px auto 0;
+        text-align: center;
+        width: 60px;
+      }
+    }
+
+    div.indicator {
+      margin: 10px;
+
+      &.rec-status::before {
+        background: $red;
+        border-radius: 50%;
+        content:" ";
+        display: inline-block;
+        height: 12px;
+        margin-right: 6px;
+        width: 12px;
+
+      }
+    }
+  }
+
+  .background {
+    height: $viewport-height;
+    position: absolute;
+    width: $viewport-width;
+    z-index: -2;
+  }
+
+  .camera-view {
+    position: absolute;
+    z-index: -1;
+  }
+
+  button.takeoff-land {
+    @extend %button;
+    background-image: url("./resources/up-arrow.png");
+  }
+
+  button.rec-button {
+    @extend %button;
+    background-image: url("./resources/rec.png");
+  }
+
+  button.flip-view {
+    @extend %button;
+    background-image: url("./resources/flip.png");
+    position: absolute;
+    left: ($viewport-width - 52px);
+    top: ($viewport-height - 100px);
+  }
+
+  div.foot {
+    @extend %status-bar;
+    align-self: flex-end;
+    border-top: $grey solid 2px;
+  }
+
   // flexbox children
-  & > div {
+  div.drone-button {
     background: cornflowerblue;
     border-radius: 50%;
-    color: $text-colour;
     height: $button-diameter;
     line-height: $button-diameter;
     text-align: center;

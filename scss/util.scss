@@ -1,4 +1,24 @@
 $button-diameter: 60px;
-$text-colour: white;
-$viewport-height: 360px;
-$viewport-width: 640px;
+$font: "Trebuchet MS", Helvetica, sans-serif;
+$grey: #3b3b3b;
+$icon-dimensions: 30px;
+$red: #da0000;
+$indicator-colour: #dba12a;
+$viewport-height: 480px;
+$viewport-width: 854px;
+
+%status-bar {
+    background: #d8d8d8;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    width: $viewport-width;
+}
+
+%button {
+  align-self: center;
+  background: none;
+  border: none;
+  height: $button-diameter;
+  width: $button-diameter;
+}

@@ -15,7 +15,8 @@
   },
   "_moduleAliases": {
     "@root": ".",
-    "@lib": "lib/"
+    "@lib": "lib/",
+    "@resources": "resources/"
   },
   "scripts": {
     "start": "node index.js",

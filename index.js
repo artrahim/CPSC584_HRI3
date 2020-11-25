@@ -3,7 +3,7 @@ const express = require('express'),
     http = require('http').Server(app),
     io = require('socket.io')(http),
     path = require('path'),
-    bebop = require("./lib/node-bebop/lib");
+    bebop = require("./lib/node-bebop");
 
 
 app.get('/', function(req, res){

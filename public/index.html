@@ -5,14 +5,42 @@
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="client.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <body>
+
         <div class="main-section">
-            <div class="drone-button takeoff">takeoff</div>
-            <div class="drone-button land hidden">land</div>
-            <div class="drone-button predef forward">forward</div>
-            <div class="drone-button predef back">back</div>
-            <div class="drone-button predef stop">stop</div>
-            <div class="drone-button emergency">emergency</div>
+
+            <div class="head">
+                <img class="icon" src="resources/battery-status.png">
+                <img class="icon" src="resources/wifi.png">
+                <div class="indicator rec-status">REC</div>
+                <div class="status">LANDING</div>
+                <div class="dropdown-button">
+                    <img class="arrow" src="resources/arrow-down-sign-to-navigate.png">
+                </div>
+                <div class="indicator"> _ _ . _ _ m</div>
+                <div class="indicator"> _ _ . _ _ m</div>
+                <div class="indicator"> _ _ m/s</div>
+                <img class="icon" src="resources/settings.png">
+
+            </div>
+
+            <button class="takeoff-land"></button>
+            <button class="rec-button"></button>
+            <button class="flip-view"></button>
+
+            <img class="camera-view" src="resources/camera-view.png">
+            <img class="background" src="resources/background.png" alt="background">
+
+
+            <!--<div class="drone-button takeoff">takeoff</div>-->
+            <!--<div class="drone-button land hidden">land</div>-->
+            <!--<div class="drone-button predef forward">forward</div>-->
+            <!--<div class="drone-button predef back">back</div>-->
+            <!--<div class="drone-button predef stop">stop</div>-->
+            <!--<div class="drone-button emergency">emergency</div>-->
+            <div class="foot"></div>
+
         </div>
     </body>
 </html>
