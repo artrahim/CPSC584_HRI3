@@ -1,6 +1,8 @@
 <html lang="en">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="http://zwibbler.com/zwibbler-demo.js"></script>
+
 
     <link href="style.css" type="text/css" rel="stylesheet">
     <script src="client.js"></script>
@@ -10,35 +12,94 @@
 
         <div class="main-section">
             <div class="head">
-                <img class="icon" src="resources/battery-status.png">
-                <img class="icon" src="resources/wifi.png">
-                <div class="indicator rec-status">REC</div>
-                <div class="status">LANDING</div>
-                <div class="dropdown-button">
-                    <img class="arrow" src="resources/arrow-down-sign-to-navigate.png">
+                <div class="left separator">
+                    <img class="icon" src="resources/battery-status.png">
+                    <img class="icon" src="resources/wifi.png">
+                    <div class="indicator rec-status hidden">REC</div>
+                    <p class="status">RESTING</p>
                 </div>
-                <div class="indicator"> _ _ . _ _ m</div>
-                <div class="indicator"> _ _ . _ _ m</div>
-                <div class="indicator"> _ _ m/s</div>
-                <img class="icon" src="resources/settings.png">
+                <div class="dropdown-button up">
+                    <img class="arrow-down" src="resources/arrow-down-sign-to-navigate.png">
+                    <img class="arrow-up hidden" src="resources/navigate-up-arrow.png">
+                    <div class="dropdown closed">
+                        <div class="all-predefs">
+                            <button class="predef forward"><span class="name">Forward</span></button>
+                            <button class="predef back"><span class="name">Back</span></button>
+                            <button class="predef left"><span class="name">Left</span></button>
+                            <button class="predef right"><span class="name">Right</span></button>
+                        </div>
+                        <button class="add-predef"></button>
 
+                        <button class="start-path"></button>
+                        <button class="stop-path hidden"></button>
+
+                        <button class="path-settings"></button>
+                    </div>
+                </div>
+                <div class="separator">
+                    <div class="indicator height">_ _ . _ _ m</div>
+                    <img class="icon" src="resources/height.png">
+                    <div class="indicator width">_ _ . _ _ m</div>
+                    <img class="icon" src="resources/width.png">
+                    <div class="indicator"> _ _ m/s</div>
+                    <img class="icon" src="resources/settings.png">
+                </div>
             </div>
 
-            <button class="takeoff-land"></button>
-            <button class="rec-button"></button>
-            <button class="flip-view"></button>
 
-            <img class="camera-view" src="resources/camera-view.png">
-            <img class="background" src="resources/background.png" alt="background">
+            <div class="map-view hidden">
+                <div id="zwibbler" style="margin-left:auto;margin-right:auto;width:981px;height:400px;">
+                    <div toolbar>
+                        <button z-click="useBrushTool()" class="draw"></button>
+                        <button z-click="useBrushTool()" class="erase"></button>
+
+                    </div>
+
+                </div>
 
 
-            <!--<div class="drone-button takeoff">takeoff</div>-->
-            <!--<div class="drone-button land hidden">land</div>-->
-            <!--<div class="drone-button predef forward">forward</div>-->
-            <!--<div class="drone-button predef back">back</div>-->
-            <!--<div class="drone-button predef stop">stop</div>-->
-            <!--<div class="drone-button emergency">emergency</div>-->
-            <div class="foot"></div>
+                <form class="name-path hidden">
+                    <label for="new-path-name">Path Name:</label>
+                    <input type="text" id="new-path-name" name="new-path-name">
+                    <input class="submit" type="submit" value="">
+
+                </form>
+
+                <button class="add-path"></button>
+                <button class="flip-view"></button>
+
+
+                <img class="map" src="resources/map-view.png">
+            </div>
+
+            <div class="camera-view">
+                <button class="takeoff"></button>
+                <button class="land hidden"></button>
+                <button class="rec-button"></button>
+                <button class="stop-button hidden"></button>
+                <button class="emergency"></button>
+                <button class="flip-view"></button>
+
+                <img class="camera-view-box" src="resources/camera-view.png">
+                <img class="background" src="resources/background.png" alt="background">
+            </div>
+
+            <div class="foot">
+                <div class="join exposure">
+                    <img class="icon short exposure-arrow" src="resources/down-filled-triangular-arrow.png">
+                    <p class="exposure-indicator indicator">-3...-2...-1...0...+1...+2...+3</p>
+                </div>
+                <div class="fstop join">
+                    <img class="icon" src="resources/aperture.png">
+                    <p class="fstop-val">f/8</p>
+                </div>
+                <div class="timer indicator"><span class="value">00:00:00.000</span></div>
+                <div class="iso join">
+                    <img class="icon" src="resources/iso.png">
+                    <p class="indicator">1700</p>
+                </div>
+                <p class="time"></p>
+            </div>
 
         </div>
     </body>

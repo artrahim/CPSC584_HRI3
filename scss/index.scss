@@ -13,19 +13,30 @@ div.main-section {
     @extend %status-bar;
     border-bottom: $grey solid 2px;
 
+    div.separator {
+      display: inline-flex;
+
+      &.left div, &.left img{
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+
+    }
+
     img.icon {
       height: $icon-dimensions;
       padding: 5px;
       width: $icon-dimensions;
     }
 
-    div.status {
+    p.status {
       background: $indicator-colour;
       border-radius: 3px;
       color: $grey;
       height: 35px;
       letter-spacing: 3px;
       line-height: 30px;
+      margin: 0 0 0 61px;
       text-align: center;
       width: 120px;
     }
@@ -34,9 +45,23 @@ div.main-section {
       background: $grey;
       border-radius: 3px;
       height: 60px;
+      position: relative;
       width: 210px;
+      z-index: 2;
 
-      img.arrow {
+      //&.up {
+      //  //top: $viewport-height/2;
+      //  animation-name: slideInUp;
+      //  animation-duration: 400ms;
+      //}
+
+      &.down {
+        top: $viewport-height/2;
+        //animation-name: slideInDown;
+        //animation-duration: 400ms;
+      }
+
+      img.arrow-down, img.arrow-up {
         display: block;
         height: 40px;
         margin: 20px auto 0;
@@ -46,7 +71,9 @@ div.main-section {
     }
 
     div.indicator {
-      margin: 10px;
+      margin-top: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
 
       &.rec-status::before {
         background: $red;
@@ -61,6 +88,92 @@ div.main-section {
     }
   }
 
+  div.dropdown {
+    background: #b9b9b9;
+    display: flex;
+    height: $viewport-height/2;
+    left: -292px;
+    position: absolute;
+    width: $viewport-width;
+
+    .all-predefs {
+      display: flex;
+    }
+
+    button {
+      margin: 10px;
+    }
+
+    &.closed {
+      visibility: hidden;
+
+      &:active {
+        animation-name: shortDropdownOpenAnimation;
+        animation-duration: 400ms;
+      }
+    }
+
+    &.open {
+      top: -($viewport-height/2);
+      visibility: visible;
+
+      &:active {
+        animation-name: shortDropdownCloseAnimation;
+        animation-duration: 400ms;
+      }
+    }
+
+    button.predef {
+      @extend %predef-button;
+      background-image: url("./resources/roadmap.png");
+      margin-bottom: 100px;
+
+      &.selected {
+        background-image: url("./resources/selected-roadmap.png");
+      }
+
+      &:focus{
+        border: none;
+        outline: 0;
+      }
+    }
+
+    button.add-predef {
+      @extend %predef-button;
+      background-image: url("./resources/add.png");
+      margin-bottom: 100px;
+    }
+
+    button.start-path {
+      @extend %predef-button;
+      background-image: url("./resources/video-play-button.png");
+
+    }
+
+    button.stop-path {
+      @extend %predef-button;
+      background-image: url("./resources/stop-path.png");
+
+    }
+
+    button.stop-path, button.start-path {
+      position: relative;
+      top: 70px;
+      right: 150px;
+    }
+
+    button.path-settings {
+      @extend %button;
+      background-image: url("./resources/more.png");
+      height: 40px;
+      left: 200px;
+      position: relative;
+      bottom: 90px;
+      width: 40px;
+
+    }
+  }
+
   .background {
     height: $viewport-height;
     position: absolute;
@@ -68,14 +181,19 @@ div.main-section {
     z-index: -2;
   }
 
-  .camera-view {
+  .camera-view-box {
     position: absolute;
     z-index: -1;
   }
 
-  button.takeoff-land {
+  button.takeoff {
     @extend %button;
     background-image: url("./resources/up-arrow.png");
+  }
+
+  button.land {
+    @extend %button;
+    background-image: url("./resources/down-arrow.png");
   }
 
   button.rec-button {
@@ -83,31 +201,161 @@ div.main-section {
     background-image: url("./resources/rec.png");
   }
 
+  button.stop-button {
+    @extend %button;
+    background-image: url("./resources/stop-rec.png");
+  }
+
+  button.emergency {
+    @extend %button;
+    background-image: url("./resources/stop.png");
+    position: absolute;
+    top: ($viewport-height - 100px);
+  }
+
   button.flip-view {
     @extend %button;
-    background-image: url("./resources/flip.png");
+    background-image: url("./resources/flip.png") !important;
     position: absolute;
     left: ($viewport-width - 52px);
     top: ($viewport-height - 100px);
+  }
+
+  button.add-path {
+    @extend %button;
+    background-image: url("./resources/add-path.png") !important;
+    position: absolute;
+    left: ($viewport-width - 52px);
+    top: 210px;
+  }
+
+  div.camera-view {
+    display: contents;
+  }
+
+  div.map-view {
+
+      .zwibbler-builtin-toolbar {
+        background: none;
+      }
+
+      .zwibbler-canvas-holder {
+        width: $viewport-width;
+        left: 0px !important;
+      }
+
+      button {
+        @extend %button;
+
+      }
+
+    button.draw {
+      @extend %button;
+      background-image: url("./resources/drawing.png");
+
+      position: absolute;
+      left: ($viewport-width - 490px);
+      top: ($viewport-height - 100px);
+
+      &.selected {
+        background-image: url("./resources/selected-drawing.png");
+
+      }
+
+    }
+
+    button.erase {
+      @extend %button;
+      background-image: url("./resources/eraser.png");
+
+      position: absolute;
+      left: ($viewport-width - 402px);
+      top: ($viewport-height - 100px);
+
+      &.selected {
+        background-image: url("./resources/selected-eraser.png");
+
+      }
+    }
+
+    form.name-path {
+      @extend %settings-box;
+      color: white;
+      text-align: center;
+
+      input.submit {
+        @extend %button;
+        background-image: url("./resources/enter.png");
+        position: relative;
+        right: 120px;
+        top: 160px;
+      }
+    }
+
+    .map {
+      height: $viewport-height;
+      left: 8px;
+      position: absolute;
+      width: $viewport-width;
+      top: 8px;
+      z-index: -1;
+    }
+
   }
 
   div.foot {
     @extend %status-bar;
     align-self: flex-end;
     border-top: $grey solid 2px;
+
+    div.join {
+      display: flex;
+
+      p {
+        margin: 10px 10px 10px 2px;
+      }
+
+    }
+
+    div.indicator {
+      margin: 10px;
+    }
+
+    div.exposure {
+      p.exposure-indicator {
+        margin-bottom: 0;
+        margin-top: 20px;
+      }
+
+      img.exposure-arrow {
+        position: relative;
+        left: calc(50% - 7px);
+      }
+    }
+
+    img.icon {
+      height: $icon-dimensions;
+      padding: 5px;
+      width: $icon-dimensions;
+
+      &.short {
+          height: ($icon-dimensions/2);
+      }
+
+    }
+
+    div.fstop {
+      font-style: italic;
+
+    }
+
+    p.time {
+      margin: 10px;
+    }
   }
 
-  // flexbox children
-  div.drone-button {
-    background: cornflowerblue;
-    border-radius: 50%;
-    height: $button-diameter;
-    line-height: $button-diameter;
-    text-align: center;
-    width: $button-diameter;
-  }
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }

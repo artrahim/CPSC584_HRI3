@@ -6,12 +6,33 @@ div.main-section div.foot, div.main-section div.head {
   width: 854px;
 }
 
-div.main-section button.flip-view, div.main-section button.rec-button, div.main-section button.takeoff-land {
+div.main-section div.map-view form.name-path input.submit, div.main-section div.map-view button.erase, div.main-section div.map-view button.draw, div.main-section div.map-view button, div.main-section button.add-path, div.main-section button.flip-view, div.main-section button.emergency, div.main-section button.stop-button, div.main-section button.rec-button, div.main-section button.land, div.main-section button.takeoff, div.main-section div.dropdown button.path-settings, div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path, div.main-section div.dropdown button.add-predef, div.main-section div.dropdown button.predef {
   align-self: center;
   background: none;
   border: none;
   height: 60px;
   width: 60px;
+}
+
+div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path, div.main-section div.dropdown button.add-predef, div.main-section div.dropdown button.predef {
+  border-radius: 50%;
+  height: 80px;
+  padding-top: 79px;
+  line-height: 25px;
+  width: 80px;
+}
+
+div.main-section div.map-view form.name-path {
+  background: #393939;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  left: 213.5px;
+  height: 240px;
+  position: absolute;
+  top: 120px;
+  width: 427px;
+  z-index: 3;
 }
 
 div.main-section {
@@ -26,18 +47,26 @@ div.main-section {
 div.main-section div.head {
   border-bottom: #3b3b3b solid 2px;
 }
-div.main-section div.head img.icon {
-  height: 30px;
-  padding: 5px;
-  width: 30px;
+div.main-section div.head div.separator {
+  display: inline-flex;
 }
-div.main-section div.head div.status {
+div.main-section div.head div.separator.left div, div.main-section div.head div.separator.left img {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+div.main-section div.head img.icon {
+  height: 25px;
+  padding: 5px;
+  width: 25px;
+}
+div.main-section div.head p.status {
   background: #dba12a;
   border-radius: 3px;
   color: #3b3b3b;
   height: 35px;
   letter-spacing: 3px;
   line-height: 30px;
+  margin: 0 0 0 61px;
   text-align: center;
   width: 120px;
 }
@@ -45,9 +74,14 @@ div.main-section div.head div.dropdown-button {
   background: #3b3b3b;
   border-radius: 3px;
   height: 60px;
+  position: relative;
   width: 210px;
+  z-index: 2;
 }
-div.main-section div.head div.dropdown-button img.arrow {
+div.main-section div.head div.dropdown-button.down {
+  top: 240px;
+}
+div.main-section div.head div.dropdown-button img.arrow-down, div.main-section div.head div.dropdown-button img.arrow-up {
   display: block;
   height: 40px;
   margin: 20px auto 0;
@@ -55,7 +89,9 @@ div.main-section div.head div.dropdown-button img.arrow {
   width: 60px;
 }
 div.main-section div.head div.indicator {
-  margin: 10px;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 div.main-section div.head div.indicator.rec-status::before {
   background: #da0000;
@@ -66,43 +102,192 @@ div.main-section div.head div.indicator.rec-status::before {
   margin-right: 6px;
   width: 12px;
 }
+div.main-section div.dropdown {
+  background: #b9b9b9;
+  display: flex;
+  height: 240px;
+  left: -292px;
+  position: absolute;
+  width: 854px;
+}
+div.main-section div.dropdown .all-predefs {
+  display: flex;
+}
+div.main-section div.dropdown button {
+  margin: 10px;
+}
+div.main-section div.dropdown.closed {
+  visibility: hidden;
+}
+div.main-section div.dropdown.closed:active {
+  animation-name: shortDropdownOpenAnimation;
+  animation-duration: 400ms;
+}
+div.main-section div.dropdown.open {
+  top: -240px;
+  visibility: visible;
+}
+div.main-section div.dropdown.open:active {
+  animation-name: shortDropdownCloseAnimation;
+  animation-duration: 400ms;
+}
+div.main-section div.dropdown button.predef {
+  background-image: url("./resources/roadmap.png");
+  margin-bottom: 100px;
+}
+div.main-section div.dropdown button.predef.selected {
+  background-image: url("./resources/selected-roadmap.png");
+}
+div.main-section div.dropdown button.predef:focus {
+  border: none;
+  outline: 0;
+}
+div.main-section div.dropdown button.add-predef {
+  background-image: url("./resources/add.png");
+  margin-bottom: 100px;
+}
+div.main-section div.dropdown button.start-path {
+  background-image: url("./resources/video-play-button.png");
+}
+div.main-section div.dropdown button.stop-path {
+  background-image: url("./resources/stop-path.png");
+}
+div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path {
+  position: relative;
+  top: 70px;
+  right: 150px;
+}
+div.main-section div.dropdown button.path-settings {
+  background-image: url("./resources/more.png");
+  height: 40px;
+  left: 200px;
+  position: relative;
+  bottom: 90px;
+  width: 40px;
+}
 div.main-section .background {
   height: 480px;
   position: absolute;
   width: 854px;
   z-index: -2;
 }
-div.main-section .camera-view {
+div.main-section .camera-view-box {
   position: absolute;
   z-index: -1;
 }
-div.main-section button.takeoff-land {
+div.main-section button.takeoff {
   background-image: url("./resources/up-arrow.png");
+}
+div.main-section button.land {
+  background-image: url("./resources/down-arrow.png");
 }
 div.main-section button.rec-button {
   background-image: url("./resources/rec.png");
 }
+div.main-section button.stop-button {
+  background-image: url("./resources/stop-rec.png");
+}
+div.main-section button.emergency {
+  background-image: url("./resources/stop.png");
+  position: absolute;
+  top: 380px;
+}
 div.main-section button.flip-view {
-  background-image: url("./resources/flip.png");
+  background-image: url("./resources/flip.png") !important;
   position: absolute;
   left: 802px;
   top: 380px;
+}
+div.main-section button.add-path {
+  background-image: url("./resources/add-path.png") !important;
+  position: absolute;
+  left: 802px;
+  top: 210px;
+}
+div.main-section div.camera-view {
+  display: contents;
+}
+div.main-section div.map-view .zwibbler-builtin-toolbar {
+  background: none;
+}
+div.main-section div.map-view .zwibbler-canvas-holder {
+  width: 854px;
+  left: 0px !important;
+}
+div.main-section div.map-view button.draw {
+  background-image: url("./resources/drawing.png");
+  position: absolute;
+  left: 364px;
+  top: 380px;
+}
+div.main-section div.map-view button.draw.selected {
+  background-image: url("./resources/selected-drawing.png");
+}
+div.main-section div.map-view button.erase {
+  background-image: url("./resources/eraser.png");
+  position: absolute;
+  left: 452px;
+  top: 380px;
+}
+div.main-section div.map-view button.erase.selected {
+  background-image: url("./resources/selected-eraser.png");
+}
+div.main-section div.map-view form.name-path {
+  color: white;
+  text-align: center;
+}
+div.main-section div.map-view form.name-path input.submit {
+  background-image: url("./resources/enter.png");
+  position: relative;
+  right: 120px;
+  top: 160px;
+}
+div.main-section div.map-view .map {
+  height: 480px;
+  left: 8px;
+  position: absolute;
+  width: 854px;
+  top: 8px;
+  z-index: -1;
 }
 div.main-section div.foot {
   align-self: flex-end;
   border-top: #3b3b3b solid 2px;
 }
-div.main-section div.drone-button {
-  background: cornflowerblue;
-  border-radius: 50%;
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  width: 60px;
+div.main-section div.foot div.join {
+  display: flex;
+}
+div.main-section div.foot div.join p {
+  margin: 10px 10px 10px 2px;
+}
+div.main-section div.foot div.indicator {
+  margin: 10px;
+}
+div.main-section div.foot div.exposure p.exposure-indicator {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+div.main-section div.foot div.exposure img.exposure-arrow {
+  position: relative;
+  left: calc(50% - 7px);
+}
+div.main-section div.foot img.icon {
+  height: 25px;
+  padding: 5px;
+  width: 25px;
+}
+div.main-section div.foot img.icon.short {
+  height: 12.5px;
+}
+div.main-section div.foot div.fstop {
+  font-style: italic;
+}
+div.main-section div.foot p.time {
+  margin: 10px;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /*# sourceMappingURL=style.css.map */
