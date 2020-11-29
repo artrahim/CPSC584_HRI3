@@ -88,6 +88,20 @@ div.main-section {
     }
   }
 
+  div.camera-settings{
+    @extend %settings-box;
+
+    button.close-settings {
+      @extend %button;
+
+      background-image: url("./resources/cancel.png");
+      left: 380px;
+      height: 30px;
+      top: 10px;
+      width: 30px;
+    }
+  }
+
   div.dropdown {
     background: #b9b9b9;
     display: flex;
@@ -132,6 +146,10 @@ div.main-section {
         background-image: url("./resources/selected-roadmap.png");
       }
 
+      &.not-available {
+        background-image: url("./resources/disabled-roadmap.png");
+      }
+
       &:focus{
         border: none;
         outline: 0;
@@ -157,18 +175,21 @@ div.main-section {
     }
 
     button.stop-path, button.start-path {
-      position: relative;
-      top: 70px;
-      right: 150px;
+      height: $button-diameter;
+      position: absolute;
+      top: 150px;
+      padding: 0;
+      right: 400px;
+      width: $button-diameter;
     }
 
     button.path-settings {
       @extend %button;
       background-image: url("./resources/more.png");
+      bottom: 180px;
       height: 40px;
-      left: 200px;
-      position: relative;
-      bottom: 90px;
+      position: absolute;
+      right: 0;
       width: 40px;
 
     }
@@ -280,7 +301,6 @@ div.main-section {
 
     form.name-path {
       @extend %settings-box;
-      color: white;
       text-align: center;
 
       input.submit {

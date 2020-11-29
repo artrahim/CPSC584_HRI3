@@ -38,10 +38,22 @@ $viewport-width: 854px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
+  color: white;
   left: ($viewport-width/4);
   height: $viewport-height/2;
   position: absolute;
   top: $viewport-height/4;
   width: $viewport-width/2;
   z-index: 3;
+
+  button.close-settings {
+    @extend %button;
+
+    background-image: url("./resources/cancel.png");
+    left: 380px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    width: 30px;
+  }
 }

@@ -3,8 +3,11 @@ $(function () {
     const $add_path = $("button.add-path"),
         $add_predef = $("button.add-predef"),
         $all_predefs = $("div.all-predefs"),
+        $close_settings = $("button.close-settings"),
         $backward = $("div.back"),
         $camera_flip = $("button.flip-view"),
+        $camera_settings = $("div.camera-settings"),
+        $camera_settings_button = $("img.camera-settings-button"),
         $camera_view = $("div.camera-view"),
         $drawing = $("button.draw"),
         $dropdown = $("div.dropdown"),
@@ -85,6 +88,10 @@ $(function () {
         $start_path.removeClass("hidden");
         $stop_path.addClass("hidden");
 
+    });
+
+    $camera_settings_button.on("click", function() {
+        $camera_settings.removeClass("hidden");
     });
 
     $predefs.on("click", function(e){
@@ -168,9 +175,20 @@ $(function () {
 
     });
 
+    $close_settings.on("click", function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        $camera_settings.addClass("hidden");
+        $name_path.addClass("hidden");
+
+    });
+
     $add_predef.on("click", function(){
-        switchView();
+        $map_view.removeClass("hidden");
+        $camera_view.addClass("hidden");
         openCloseDropdown();
+
     });
 
     $name_path.on("submit", function(e){
@@ -183,8 +201,32 @@ $(function () {
 
         $name_path.addClass("hidden");
         addPath(input);
+        refreshPredefEventListener();
         switchView();
     });
+
+    function refreshPredefEventListener() {
+        let $newPre = $("button.predef");
+        $newPre.off();
+
+        // Re-add event handler for all matching elements
+        $newPre.on("click", function() {
+            const $selected = $(this);
+            let add = false;
+            if(!$selected.hasClass("selected")){
+                add = true;
+            }
+
+            $newPre.removeClass("selected");
+
+            if(add){
+                $selected.addClass("selected");
+            } else {
+                $selected.removeClass("selected");
+            }
+            // Handle event.
+        });
+    }
 
     function startTimer(){
         timeBegan = new Date();
@@ -229,8 +271,6 @@ $(function () {
             $camera_view.removeClass("hidden");
 
         }
-        $drawing.removeClass("selected");
-        $eraser.removeClass("selected");
 
         zwibbler.newDocument();
 

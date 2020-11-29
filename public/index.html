@@ -27,6 +27,7 @@
                             <button class="predef back"><span class="name">Back</span></button>
                             <button class="predef left"><span class="name">Left</span></button>
                             <button class="predef right"><span class="name">Right</span></button>
+                            <button class="predef not-available"><span class="name">Banff</span></button>
                         </div>
                         <button class="add-predef"></button>
 
@@ -42,10 +43,25 @@
                     <div class="indicator width">_ _ . _ _ m</div>
                     <img class="icon" src="resources/width.png">
                     <div class="indicator"> _ _ m/s</div>
-                    <img class="icon" src="resources/settings.png">
+                    <img class="camera-settings-button icon" src="resources/settings.png">
                 </div>
             </div>
 
+            <div class="camera-settings hidden">
+                <button class="close-settings"></button>
+
+                <p>Settings</p>
+                <ul>
+                    <li>Shutter Speed</li>
+                    <li>Aperture</li>
+                    <li>ISO</li>
+                    <li>Exposure Mode</li>
+                    <li>Image Size</li>
+                    <li>Image Format</li>
+                    <li>Resolution</li>
+                    <li>Tilt Maximum and Minimum</li>
+                </ul>
+            </div>
 
             <div class="map-view hidden">
                 <div id="zwibbler" style="margin-left:auto;margin-right:auto;width:981px;height:400px;">
@@ -59,6 +75,7 @@
 
 
                 <form class="name-path hidden">
+                    <button class="close-settings"></button>
                     <label for="new-path-name">Path Name:</label>
                     <input type="text" id="new-path-name" name="new-path-name">
                     <input class="submit" type="submit" value="">
