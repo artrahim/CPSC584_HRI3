@@ -3,28 +3,40 @@ $(function () {
     const $add_path = $("button.add-path"),
         $add_predef = $("button.add-predef"),
         $all_predefs = $("div.all-predefs"),
+        $aperture = $('input:radio[name="aperture"]'),
         $close_settings = $("button.close-settings"),
         $backward = $("div.back"),
+        $back_button = $("button.back"),
         $camera_flip = $("button.flip-view"),
         $camera_settings = $("div.camera-settings"),
         $camera_settings_button = $("img.camera-settings-button"),
+        $camera_settings_items = $("div.camera-settings").find("li"),
+        $camera_settings_inner = $("div.settings-item"),
         $camera_view = $("div.camera-view"),
+        $delete_paths = $("li.delete-paths"),
+        $delete_paths_checkbox = $("#delete"),
         $drawing = $("button.draw"),
         $dropdown = $("div.dropdown"),
         $dropdown_button = $("div.dropdown-button"),
         $dropdown_down = $dropdown_button.find(".arrow-down"),
         $dropdown_up = $dropdown_button.find(".arrow-up"),
+        $edit_predefs = $("div.edit-predefs"),
         $emergency = $("button.emergency"),
         $eraser = $("button.erase"),
+        $fstop_val = $("p.fstop-val"),
         $forward = $("button.forward"),
+        $iso = $("div.iso"),
+        $iso_settings =  $("div.iso-settings"),
+        $iso_settings_input = $('input:radio[name="iso-settings"]'),
         $land = $("button.land"),
         $left = $("button.left"),
         $map_view = $("div.map-view"),
         $name_path = $("form.name-path"),
-        $predefs = $("button.predef"),
+        $path_settings = $("button.path-settings"),
         $rec = $("button.rec-button"),
         $rec_status = $("div.rec-status"),
         $right = $("button.right"),
+        $settings_option = $("ul.options").find("input"),
         $start_path = $("button.start-path"),
         $status = $("p.status"),
         $stop = $("button.stop"),
@@ -33,11 +45,15 @@ $(function () {
         $takeoff = $("button.takeoff"),
         $timer = $("div.timer"),
         $timer_value = $timer.find('.value'),
-        $time = $("p.time");
+        $time = $("p.time"),
+        $unavailable_checkboxes = $("button.not-available"),
+        $view_all = $("li.view-all-li"),
+        $view_all_checkbox = $("#view-all");
 
     let stopwatch,
-        timeBegan = null;
-
+        $deleteable_predefs,
+        timeBegan = null,
+        $predefs = $("button.predef");
 
     $takeoff.on("click", function(){
         socket.emit('takeoff');
@@ -67,6 +83,53 @@ $(function () {
         }, 2000);
     });
 
+    // $delete_paths.on("click", function(){
+    //     $delete_paths_checkbox.attr("checked", !$delete_paths_checkbox.attr("checked"));
+    // });
+
+    $delete_paths_checkbox.change(function() {
+        let trash = $("<img class='icon trash' src='resources/trash.png'></img>"),
+            $predefs = $("button.predef"),
+            $currentTrash = $(".trash");
+
+        if(this.checked) {
+            $predefs.addClass("deletable");
+            $predefs.append(trash);
+
+            refreshDeletable();
+
+        } else {
+            $predefs.removeClass("deletable");
+            $currentTrash.remove();
+
+            $deleteable_predefs.off();
+            refreshDeletable();
+            refreshPredefEventListener();
+
+        }
+    });
+
+    $aperture.change(function(){
+        let selected = $(this).val();
+        $fstop_val.text(selected);
+    });
+
+    $iso_settings_input.change(function(){
+        let selected = $(this).val();
+        $iso.find("p").text(selected);
+
+    });
+
+    $iso.on("click", function(){
+        $camera_settings.removeClass("hidden");
+        $iso_settings.removeClass("hidden");
+    });
+
+    $settings_option.on("click", function(){
+        $(this).parent().addClass("selected");
+        ;$(this).parent().siblings().removeClass("selected");
+    });
+
     $rec.on("click", function(){
         socket.emit('land');
         $stop_button.removeClass("hidden");
@@ -76,6 +139,17 @@ $(function () {
         $rec_status.removeClass("hidden");
 
         startTimer();
+    });
+
+    $back_button.on("click", function(e){
+        let parent = $(this).parent(),
+            $parent = $(parent);
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        $parent.addClass("hidden");
+        $parent.parent().siblings().removeClass("hidden");
     });
 
     $start_path.on("click", function(){
@@ -94,10 +168,21 @@ $(function () {
         $camera_settings.removeClass("hidden");
     });
 
+    $path_settings.on("click", function() {
+        $edit_predefs.removeClass("hidden");
+    });
+
+    $(document).mouseup(function(e) {
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!$edit_predefs.is(e.target) && $edit_predefs.has(e.target).length === 0) {
+            $edit_predefs.addClass("hidden");
+        }
+    });
+
     $predefs.on("click", function(e){
         const $selected = $(this);
         let add = false;
-        if(!$selected.hasClass("selected")){
+        if(!$selected.hasClass("selected") && !$selected.hasClass("deletable")){
             add = true;
         }
 
@@ -181,7 +266,18 @@ $(function () {
 
         $camera_settings.addClass("hidden");
         $name_path.addClass("hidden");
+        $camera_settings_inner.addClass("hidden");
+        $camera_settings_items.removeClass("hidden");
 
+    });
+
+    $camera_settings_items.on("click", function(e){
+        let current = $(this),
+            selection = current.find(".hidden");
+
+        selection.removeClass("hidden");
+
+        current.siblings().addClass("hidden");
     });
 
     $add_predef.on("click", function(){
@@ -205,6 +301,20 @@ $(function () {
         switchView();
     });
 
+    // $view_all.on("click", function(){
+    //     $view_all_checkbox.click();
+    // });
+
+    $view_all_checkbox.change(function() {
+        if(this.checked) {
+            $unavailable_checkboxes.removeClass("hidden");
+
+        } else {
+            $unavailable_checkboxes.addClass("hidden");
+
+        }
+    });
+
     function refreshPredefEventListener() {
         let $newPre = $("button.predef");
         $newPre.off();
@@ -225,6 +335,19 @@ $(function () {
                 $selected.removeClass("selected");
             }
             // Handle event.
+        });
+    }
+
+    function refreshDeletable() {
+        $deleteable_predefs = $("button.deletable");
+        $deleteable_predefs.off();
+
+
+        $deleteable_predefs.on("click", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            $(this).remove();
         });
     }
 
@@ -300,7 +423,11 @@ $(function () {
     }
 
     function addPath(name){
-        let newPath = $("<button class='predef'></button>").text(name);
+        let pathName = $("<span class='name'></span>").text(name);
+            newPath = $("<button class='predef'></button>");
+
+            newPath.append(pathName);
+
 
         $all_predefs.append(newPath);
 

@@ -27,6 +27,12 @@ div.main-section {
       height: $icon-dimensions;
       padding: 5px;
       width: $icon-dimensions;
+
+      &.trash {
+        bottom: 20px;
+        left: 40px;
+        position: relative;
+      }
     }
 
     p.status {
@@ -91,14 +97,29 @@ div.main-section {
   div.camera-settings{
     @extend %settings-box;
 
-    button.close-settings {
-      @extend %button;
+    .settings-item {
+      @extend %settings-box;
 
-      background-image: url("./resources/cancel.png");
-      left: 380px;
-      height: 30px;
-      top: 10px;
-      width: 30px;
+      left: 0;
+      overflow: auto;
+      position: absolute;
+      top: 0;
+
+      &.aperture li {
+        font-style: italic;
+      }
+
+      input {
+        visibility:hidden;
+      }
+      label {
+        cursor: pointer;
+      }
+
+      li.selected {
+        background: #d8d8d8;
+        color: $dark-grey;
+      }
     }
   }
 
@@ -106,7 +127,7 @@ div.main-section {
     background: #b9b9b9;
     display: flex;
     height: $viewport-height/2;
-    left: -292px;
+    left: -314px;
     position: absolute;
     width: $viewport-width;
 
@@ -140,7 +161,16 @@ div.main-section {
     button.predef {
       @extend %predef-button;
       background-image: url("./resources/roadmap.png");
+      display: inline-flex;
+      flex-direction: column-reverse;
       margin-bottom: 100px;
+
+      span {
+        position: relative;
+        left: 16px;
+        top: 28px;
+      }
+
 
       &.selected {
         background-image: url("./resources/selected-roadmap.png");
@@ -192,6 +222,18 @@ div.main-section {
       right: 0;
       width: 40px;
 
+    }
+
+    div.edit-predefs {
+      background: $dark-grey;
+      color: #ffffff;
+      position: absolute;
+      right: 0;
+      width: 200px;
+
+      ul {
+        @extend %settings-list;
+      }
     }
   }
 

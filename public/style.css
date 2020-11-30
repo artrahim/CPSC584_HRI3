@@ -6,7 +6,7 @@ div.main-section div.foot, div.main-section div.head {
   width: 854px;
 }
 
-div.main-section div.map-view form.name-path input.submit, div.main-section div.map-view button.erase, div.main-section div.map-view button.draw, div.main-section div.map-view button, div.main-section button.add-path, div.main-section button.flip-view, div.main-section button.emergency, div.main-section button.stop-button, div.main-section button.rec-button, div.main-section button.land, div.main-section button.takeoff, div.main-section div.dropdown button.path-settings, div.main-section div.map-view form.name-path button.close-settings, div.main-section div.camera-settings button.close-settings, div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path, div.main-section div.dropdown button.add-predef, div.main-section div.dropdown button.predef {
+div.main-section div.map-view form.name-path input.submit, div.main-section div.map-view button.erase, div.main-section div.map-view button.draw, div.main-section div.map-view button, div.main-section button.add-path, div.main-section button.flip-view, div.main-section button.emergency, div.main-section button.stop-button, div.main-section button.rec-button, div.main-section button.land, div.main-section button.takeoff, div.main-section div.dropdown button.path-settings, div.main-section div.map-view form.name-path button.back, div.main-section div.camera-settings button.back, div.main-section div.map-view form.name-path button.close-settings, div.main-section div.camera-settings button.close-settings, div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path, div.main-section div.dropdown button.add-predef, div.main-section div.dropdown button.predef {
   align-self: center;
   background: none;
   border: none;
@@ -22,7 +22,7 @@ div.main-section div.dropdown button.stop-path, div.main-section div.dropdown bu
   width: 80px;
 }
 
-div.main-section div.map-view form.name-path, div.main-section div.camera-settings {
+div.main-section div.map-view form.name-path, div.main-section div.camera-settings .settings-item, div.main-section div.camera-settings {
   background: #393939;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
@@ -31,17 +31,48 @@ div.main-section div.map-view form.name-path, div.main-section div.camera-settin
   left: 213.5px;
   height: 240px;
   position: absolute;
+  overflow: auto;
   top: 120px;
   width: 427px;
   z-index: 3;
 }
+div.main-section div.map-view form.name-path::-webkit-scrollbar, div.main-section div.camera-settings .settings-item::-webkit-scrollbar, div.main-section div.camera-settings::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+div.main-section div.map-view form.name-path p, div.main-section div.camera-settings .settings-item p, div.main-section div.camera-settings p {
+  border-bottom: 1px solid #b9b9b9;
+  font-size: 1.2em;
+  padding: 13px;
+  margin: 0;
+  text-align: center;
+}
 div.main-section div.map-view form.name-path button.close-settings, div.main-section div.camera-settings button.close-settings {
   background-image: url("./resources/cancel.png");
-  left: 380px;
+  left: 370px;
   height: 30px;
   position: absolute;
   top: 10px;
   width: 30px;
+}
+div.main-section div.map-view form.name-path button.back, div.main-section div.camera-settings button.back {
+  background-image: url("./resources/back.png");
+  left: 10px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  width: 30px;
+}
+div.main-section div.dropdown div.edit-predefs ul, div.main-section div.map-view form.name-path ul, div.main-section div.camera-settings .settings-item ul, div.main-section div.camera-settings ul {
+  background: #393939;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+div.main-section div.dropdown div.edit-predefs ul li, div.main-section div.map-view form.name-path ul li, div.main-section div.camera-settings .settings-item ul li, div.main-section div.camera-settings ul li {
+  border-bottom: 1px solid #b9b9b9;
+  padding: 10px;
 }
 
 div.main-section {
@@ -67,6 +98,11 @@ div.main-section div.head img.icon {
   height: 25px;
   padding: 5px;
   width: 25px;
+}
+div.main-section div.head img.icon.trash {
+  bottom: 20px;
+  left: 40px;
+  position: relative;
 }
 div.main-section div.head p.status {
   background: #dba12a;
@@ -111,18 +147,30 @@ div.main-section div.head div.indicator.rec-status::before {
   margin-right: 6px;
   width: 12px;
 }
-div.main-section div.camera-settings button.close-settings {
-  background-image: url("./resources/cancel.png");
-  left: 380px;
-  height: 30px;
-  top: 10px;
-  width: 30px;
+div.main-section div.camera-settings .settings-item {
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+}
+div.main-section div.camera-settings .settings-item.aperture li {
+  font-style: italic;
+}
+div.main-section div.camera-settings .settings-item input {
+  visibility: hidden;
+}
+div.main-section div.camera-settings .settings-item label {
+  cursor: pointer;
+}
+div.main-section div.camera-settings .settings-item li.selected {
+  background: #d8d8d8;
+  color: #393939;
 }
 div.main-section div.dropdown {
   background: #b9b9b9;
   display: flex;
   height: 240px;
-  left: -292px;
+  left: -314px;
   position: absolute;
   width: 854px;
 }
@@ -149,7 +197,14 @@ div.main-section div.dropdown.open:active {
 }
 div.main-section div.dropdown button.predef {
   background-image: url("./resources/roadmap.png");
+  display: inline-flex;
+  flex-direction: column-reverse;
   margin-bottom: 100px;
+}
+div.main-section div.dropdown button.predef span {
+  position: relative;
+  left: 16px;
+  top: 28px;
 }
 div.main-section div.dropdown button.predef.selected {
   background-image: url("./resources/selected-roadmap.png");
@@ -186,6 +241,13 @@ div.main-section div.dropdown button.path-settings {
   position: absolute;
   right: 0;
   width: 40px;
+}
+div.main-section div.dropdown div.edit-predefs {
+  background: #393939;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  width: 200px;
 }
 div.main-section .background {
   height: 480px;

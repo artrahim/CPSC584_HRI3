@@ -1,4 +1,5 @@
 $button-diameter: 60px;
+$dark-grey: #393939;
 $font: "Trebuchet MS", Helvetica, sans-serif;
 $grey: #3b3b3b;
 $icon-dimensions: 25px;
@@ -34,7 +35,7 @@ $viewport-width: 854px;
 }
 
 %settings-box {
-  background: #393939;
+  background: $dark-grey;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   border-radius: 12px;
@@ -42,18 +43,70 @@ $viewport-width: 854px;
   left: ($viewport-width/4);
   height: $viewport-height/2;
   position: absolute;
+  overflow: auto;
   top: $viewport-height/4;
   width: $viewport-width/2;
   z-index: 3;
+  //
+  //-ms-overflow-style: none;  /* Internet Explorer 10+ */
+  //scrollbar-width: none;  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+
+  p {
+    border-bottom: 1px solid #b9b9b9;
+    font-size: 1.2em;
+    padding: 13px;
+    margin: 0;
+    text-align: center;
+
+  }
 
   button.close-settings {
     @extend %button;
 
     background-image: url("./resources/cancel.png");
-    left: 380px;
+    left: 370px;
     height: 30px;
     position: absolute;
     top: 10px;
     width: 30px;
   }
+
+  button.back {
+    @extend %button;
+
+    background-image: url("./resources/back.png");
+    left: 10px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    width: 30px;
+  }
+
+  ul {
+    @extend %settings-list;
+  }
+
+}
+
+%settings-list {
+  background: $dark-grey;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  li {
+    border-bottom: 1px solid #b9b9b9;
+    padding: 10px;
+
+  }
+
+
+}
+
+%settings-choices {
+
 }

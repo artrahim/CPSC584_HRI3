@@ -35,14 +35,26 @@
                         <button class="stop-path hidden"></button>
 
                         <button class="path-settings"></button>
+                        <div class="edit-predefs hidden">
+                            <ul>
+                                <li class="delete-paths">
+                                    <label for="view-all">Delete Paths</label>
+                                    <input type="checkbox" id="delete" name="view-all" value="">
+                                </li>
+                                <li class="view-all-li">
+                                    <label for="view-all">View All</label>
+                                    <input type="checkbox" id="view-all" name="view-all" value="" checked>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="separator">
-                    <div class="indicator height">_ _ . _ _ m</div>
+                    <div class="indicator height">00.00 m</div>
                     <img class="icon" src="resources/height.png">
-                    <div class="indicator width">_ _ . _ _ m</div>
+                    <div class="indicator width">00.00 m</div>
                     <img class="icon" src="resources/width.png">
-                    <div class="indicator"> _ _ m/s</div>
+                    <div class="indicator"> 00 m/s</div>
                     <img class="camera-settings-button icon" src="resources/settings.png">
                 </div>
             </div>
@@ -52,14 +64,246 @@
 
                 <p>Settings</p>
                 <ul>
-                    <li>Shutter Speed</li>
-                    <li>Aperture</li>
-                    <li>ISO</li>
-                    <li>Exposure Mode</li>
-                    <li>Image Size</li>
-                    <li>Image Format</li>
-                    <li>Resolution</li>
-                    <li>Tilt Maximum and Minimum</li>
+                    <li>
+                        <span>Shutter Speed</span>
+                        <div class="settings-item shutter-speed hidden">
+                            <p>Shutter Speed</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li>
+                                    <input type="radio" id="five-hundred" name="shutter-speed" value="five-hundred">
+                                    <label for="five-hundred">1/500</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="two-fifty" name="shutter-speed" value="two-fifty">
+                                    <label for="two-fifty">1/250</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="one-twenty-five" name="shutter-speed" value="one-twenty-five">
+                                    <label for="one-twenty-five">1/125</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="sixty" name="shutter-speed" value="sixty">
+                                    <label for="sixty">1/60</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="thirty" name="shutter-speed" value="thirty">
+                                    <label for="thirty">1/30</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="fifteen" name="shutter-speed" value="fifteen">
+                                    <label for="fifteen">1/15</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="eight" name="shutter-speed" value="eight">
+                                    <label for="eight">1/8</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="four" name="shutter-speed" value="four">
+                                    <label for="four">1/4</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="two" name="shutter-speed" value="two">
+                                    <label for="two">1/2</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>Aperture</span>
+                        <div class="settings-item aperture hidden">
+                            <p>Aperture</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li>
+                                    <input type="radio" id="f28" name="aperture" value="f/2.8">
+                                    <label for="f28">f/2.8</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="f4" name="aperture" value="f/4">
+                                    <label for="f4">f/4</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="f56" name="aperture" value="f/5.6">
+                                    <label for="f56">f/5.6</label>
+                                </li>
+                                <li class="selected">
+                                    <input type="radio" id="f8" name="aperture" value="f/8" checked="checked">
+                                    <label for="f8">f/8</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="f11" name="aperture" value="f/11">
+                                    <label for="f11">f/11</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="f16" name="aperture" value="f/16">
+                                    <label for="f16">f/16</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>ISO</span>
+                        <div class="settings-item iso-settings hidden">
+                            <p>ISO</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li>
+                                    <input type="radio" id="hundred-iso" name="iso-settings" value="100">
+                                    <label for="hundred-iso">100</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="two-hundred-iso" name="iso-settings" value="200">
+                                    <label for="two-hundred-iso">200</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="four-hundred-iso" name="iso-settings" value="400">
+                                    <label for="four-hundred-iso">400</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="eight-hundred-iso" name="iso-settings" value="800">
+                                    <label for="eight-hundred-iso">800</label>
+                                </li>
+                                <li class="selected">
+                                    <input type="radio" id="sixteen-hundred-iso" name="iso-settings" value="1,600" checked="checked">
+                                    <label for="sixteen-hundred-iso">1,600</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="thirty-two-hundred-iso" name="iso-settings" value="3,200">
+                                    <label for="thirty-two-hundred-iso">3,200</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>White Balance</span>
+                        <div class="settings-item white-balance hidden">
+                            <p>White Balance</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li class="selected">
+                                    <input type="radio" id="auto" name="white-balance" value="auto" checked="checked">
+                                    <label for="auto">Auto</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="incandescent" name="white-balance" value="incandescent">
+                                    <label for="incandescent">Incandescent</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="fluorescent" name="white-balance" value="fluorescent">
+                                    <label for="fluorescent">Fluorescent</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="direct-sunlight" name="white-balance" value="direct-sunlight">
+                                    <label for="direct-sunlight">Direct sunlight</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="flash" name="white-balance" value="flash">
+                                    <label for="flash">Flash</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="cloudy" name="white-balance" value="cloudy">
+                                    <label for="cloudy">Cloudy</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="shade" name="white-balance" value="shade">
+                                    <label for="shade">Shade</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>Anti-Flicker Mode</span>
+                        <div class="settings-item afm hidden">
+                            <p>Anti-Flicker Mode</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li class="selected">
+                                    <input type="radio" id="auto-flicker" name="afm" value="auto" checked="checked">
+                                    <label for="auto-flicker">Auto</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="fifty-hz" name="afm" value="fifty-hz">
+                                    <label for="fifty-hz">50 Hz</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="sixty-hz" name="afm" value="sixty-hz">
+                                    <label for="sixty-hz">60 Hz</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>Resolution</span>
+                        <div class="settings-item resolution hidden">
+                            <p>Resolution</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li class="selected">
+                                    <input type="radio" id="full-hd" name="resolution" value="full-hd" checked="checked">
+                                    <label for="full-hd">Full HD (1080p)</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="basic-hd" name="resolution" value="basic-hd">
+                                    <label for="basic-hd">HD (720p)</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li>
+                        <span>Return Time After Disconnection</span>
+                        <div class="settings-item rbp hidden">
+                            <p>Return Time After Disconnection</p>
+                            <button class="back"></button>
+                            <button class="close-settings"></button>
+
+                            <ul class="options">
+                                <li class="selected">
+                                    <input type="radio" id="ten-seconds" name="rbp" value="ten-seconds" checked="checked">
+                                    <label for="ten-seconds">10 sec</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="twenty-seconds" name="rbp" value="twenty-seconds">
+                                    <label for="twenty-seconds">20 sec</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="thirty-seconds" name="rbp" value="thirty-seconds">
+                                    <label for="thirty-seconds">30 sec</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="fourty-seconds" name="rbp" value="fourty-seconds">
+                                    <label for="fourty-seconds">40 sec</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="fifty-seconds" name="rbp" value="fifty-seconds">
+                                    <label for="fifty-seconds">50 sec</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="sixty-seconds" name="rbp" value="sixty-seconds">
+                                    <label for="sixty-seconds">60 sec</label>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
                 </ul>
             </div>
 
@@ -98,7 +342,9 @@
                 <button class="flip-view"></button>
 
                 <img class="camera-view-box" src="resources/camera-view.png">
-                <img class="background" src="resources/background.png" alt="background">
+                <video class="background" autoplay="autoplay" loop muted>
+                    <source src="resources/test.mp4" type="video/mp4">
+                </video>
             </div>
 
             <div class="foot">
@@ -113,7 +359,7 @@
                 <div class="timer indicator"><span class="value">00:00:00.000</span></div>
                 <div class="iso join">
                     <img class="icon" src="resources/iso.png">
-                    <p class="indicator">1700</p>
+                    <p class="indicator">1600</p>
                 </div>
                 <p class="time"></p>
             </div>
