@@ -74,7 +74,7 @@ $viewport-width: 854px;
     width: 30px;
   }
 
-  button.back {
+  button.back-button {
     @extend %button;
 
     background-image: url("./resources/back.png");

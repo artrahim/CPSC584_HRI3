@@ -4,9 +4,10 @@ $(function () {
         $add_predef = $("button.add-predef"),
         $all_predefs = $("div.all-predefs"),
         $aperture = $('input:radio[name="aperture"]'),
+        $aperture_settings = $('div.aperture'),
         $close_settings = $("button.close-settings"),
         $backward = $("div.back"),
-        $back_button = $("button.back"),
+        $back_button = $("button.back-button"),
         $camera_flip = $("button.flip-view"),
         $camera_settings = $("div.camera-settings"),
         $camera_settings_button = $("img.camera-settings-button"),
@@ -23,6 +24,7 @@ $(function () {
         $edit_predefs = $("div.edit-predefs"),
         $emergency = $("button.emergency"),
         $eraser = $("button.erase"),
+        $fstop = $("div.fstop"),
         $fstop_val = $("p.fstop-val"),
         $forward = $("button.forward"),
         $iso = $("div.iso"),
@@ -123,6 +125,11 @@ $(function () {
     $iso.on("click", function(){
         $camera_settings.removeClass("hidden");
         $iso_settings.removeClass("hidden");
+    });
+
+    $fstop.on("click", function(){
+        $camera_settings.removeClass("hidden");
+        $aperture_settings.removeClass("hidden");
     });
 
     $settings_option.on("click", function(){

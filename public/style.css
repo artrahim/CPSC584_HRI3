@@ -6,7 +6,7 @@ div.main-section div.foot, div.main-section div.head {
   width: 854px;
 }
 
-div.main-section div.map-view form.name-path input.submit, div.main-section div.map-view button.erase, div.main-section div.map-view button.draw, div.main-section div.map-view button, div.main-section button.add-path, div.main-section button.flip-view, div.main-section button.emergency, div.main-section button.stop-button, div.main-section button.rec-button, div.main-section button.land, div.main-section button.takeoff, div.main-section div.dropdown button.path-settings, div.main-section div.map-view form.name-path button.back, div.main-section div.camera-settings button.back, div.main-section div.map-view form.name-path button.close-settings, div.main-section div.camera-settings button.close-settings, div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path, div.main-section div.dropdown button.add-predef, div.main-section div.dropdown button.predef {
+div.main-section div.map-view form.name-path input.submit, div.main-section div.map-view button.erase, div.main-section div.map-view button.draw, div.main-section div.map-view button, div.main-section button.add-path, div.main-section button.flip-view, div.main-section button.emergency, div.main-section button.stop-button, div.main-section button.rec-button, div.main-section button.land, div.main-section button.takeoff, div.main-section div.dropdown button.path-settings, div.main-section div.map-view form.name-path button.back-button, div.main-section div.camera-settings button.back-button, div.main-section div.map-view form.name-path button.close-settings, div.main-section div.camera-settings button.close-settings, div.main-section div.dropdown button.stop-path, div.main-section div.dropdown button.start-path, div.main-section div.dropdown button.add-predef, div.main-section div.dropdown button.predef {
   align-self: center;
   background: none;
   border: none;
@@ -55,7 +55,7 @@ div.main-section div.map-view form.name-path button.close-settings, div.main-sec
   top: 10px;
   width: 30px;
 }
-div.main-section div.map-view form.name-path button.back, div.main-section div.camera-settings button.back {
+div.main-section div.map-view form.name-path button.back-button, div.main-section div.camera-settings button.back-button {
   background-image: url("./resources/back.png");
   left: 10px;
   height: 30px;
