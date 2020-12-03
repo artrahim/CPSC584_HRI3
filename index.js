@@ -1,10 +1,10 @@
+
 const express = require('express'),
     app = express(),
     http = require('http').Server(app),
     io = require('socket.io')(http),
-    path = require('path'),
-    bebop = require("./lib/node-bebop");
-
+    path = require('path');
+    //bebop = require("./lib/node-bebop");
 
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/public/index.html');
@@ -12,33 +12,69 @@ app.get('/', function(req, res){
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-io.on('connection', function(socket){
+io.on('connection', function(socket) {
 
-    const drone = bebop.createClient();
+    var bebop = require("./lib/node-bebop");
 
-    socket.on('takeoff', function () {
-        console.log("takeoff");
-        drone.takeOff();
+    var drone = bebop.createClient();
+
+    drone.connect(function () {
+
+        socket.on('takeoff', function () {
+            console.log("takeoff");
+            drone.takeOff();
+
+
+            /*
+            setTimeout(function() {
+                drone.land()
+            }, 5000);
+
+
+            setTimeout(function() {
+                drone.stop();
+            }, 3000);
+
+            setTimeout(function() {
+                drone.right(3);
+            }, 4000);
+
+            setTimeout(function() {
+                drone.stop();
+            }, 4000);
+
+            setTimeout(function() {
+                drone.left(3);
+            }, 5000);
+
+            setTimeout(function() {
+                drone.stop();
+            }, 6000);
+
+            setTimeout(function() {
+                drone.land();
+            }, 7000);
+             */
     });
 
     socket.on('forward', function () {
         console.log("forward");
-        drone.forward(10);
+        drone.forward(5);
     });
 
     socket.on('backward', function () {
         console.log("backward");
-        drone.backward(10);
+        drone.backward(5);
     });
 
     socket.on('right', function () {
         console.log("right");
-        drone.right(10);
+        drone.right(5);
     });
 
     socket.on('left', function () {
         console.log("left");
-        drone.left(10);
+        drone.left(5);
     });
 
     socket.on('land', function () {
@@ -65,6 +101,7 @@ io.on('connection', function(socket){
     socket.on('error', function (err) {
         console.log(err);
     });
+});
 
 });
 
